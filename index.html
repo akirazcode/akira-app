@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="dark-blue-gradient">
+<html lang="pt-BR" data-theme="deep-night-ocean">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,18 +18,18 @@
 
     <style>
         :root {
-            --color-primary: #4A90E2; /* Azul médio */
-            --color-primary-content: #FFFFFF; /* Branco */
-            --color-secondary: #2C5F9C; /* Azul escuro */
-            --color-secondary-content: #FFFFFF; /* Branco */
-            --color-accent: #5ED1FF; /* Azul claro */
-            --color-accent-content: #000000; /* Preto */
-            --color-neutral: #1E3A5F; /* Azul cinzento */
-            --color-neutral-content: #BBBBBB; /* Cinza claro */
-            --color-base-100: #0A111F; /* Fundo muito escuro, quase preto azulado */
-            --color-base-200: #10182B; /* Azul escuro sutil */
-            --color-base-300: #1A243A; /* Azul petróleo escuro */
-            --color-base-content: #E0E7FF; /* Conteúdo branco azulado para contraste */
+            --color-primary: #0A192F; /* Azul escuro principal */
+            --color-primary-content: #E0E7FF; /* Azul muito claro para texto principal */
+            --color-secondary: #1E90FF; /* Azul médio vibrante */
+            --color-secondary-content: #E0E7FF; /* Azul muito claro para texto secundário */
+            --color-accent: #64FFDA; /* Aqua claro */
+            --color-accent-content: #0A192F; /* Azul escuro para texto de destaque */
+            --color-neutral: #003366; /* Azul marinho neutro */
+            --color-neutral-content: #BBDEF8; /* Azul claro para texto neutro */
+            --color-base-100: #000B1A; /* Fundo muito escuro */
+            --color-base-200: #0A192F; /* Azul escuro base */
+            --color-base-300: #1A2E44; /* Azul acinzentado */
+            --color-base-content: #E0E7FF; /* Conteúdo azul muito claro para contraste */
             
             --radius-selector: 0.5rem; /* Botões e elementos interativos */
             --radius-field: 0.5rem; /* Campos de entrada */
@@ -60,7 +60,7 @@
             overflow-y: auto;
             background-attachment: fixed; /* Mantém o gradiente fixo ao rolar */
             /* Adiciona um efeito de brilho sutil ao corpo */
-            box-shadow: none; /* Removendo o brilho neon do corpo */
+            box-shadow: 0 0 15px rgba(30, 144, 255, 0.2), 0 0 25px rgba(100, 255, 218, 0.1);
         }
 
         .text-primary-content { color: var(--color-primary-content); }
@@ -89,16 +89,22 @@
             /* box-shadow removido */
             position: relative;
             overflow: hidden;
-            color: var(--color-primary-content);
-            background: linear-gradient(45deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil para profundidade */
+            color: var(--color-secondary-content);
+            background: linear-gradient(45deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+            text-shadow: 0 0 3px var(--color-secondary), 0 0 8px var(--color-accent); /* Efeito suave no texto */
+            box-shadow: 0 0 8px var(--color-secondary), 0 0 15px var(--color-accent); /* Brilho suave */
         }
 
         .btn:hover {
             transform: translateY(-2px);
-            border-color: var(--color-accent);
-            background: linear-gradient(45deg, var(--color-secondary) 0%, var(--color-primary) 100%); /* Inverte o gradiente no hover */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra mais intensa no hover */
+            border-color: var(--color-primary-content);
+            background: linear-gradient(45deg, var(--color-accent) 0%, var(--color-secondary) 100%); /* Inverte o gradiente no hover */
+            background-clip: padding-box;
+            -webkit-background-clip: padding-box;
+            color: var(--color-primary-content);
+            text-shadow: 0 0 5px var(--color-primary-content), 0 0 10px var(--color-accent); /* Acentua o brilho no hover */
+            box-shadow: 0 0 10px var(--color-primary-content), 0 0 20px var(--color-accent); /* Brilho mais intenso no hover */
+        }
 
         .btn::before {
             content: '';
@@ -130,14 +136,14 @@
             text-align: center;
             /* Adiciona um gradiente sutil de fundo para os cards */
             background: linear-gradient(145deg, var(--color-base-200) 0%, var(--color-base-300) 100%);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil para profundidade */
+            box-shadow: 0 0 6px rgba(30, 144, 255, 0.15), 0 0 12px rgba(100, 255, 218, 0.1); /* Brilho discreto nos cards */
         }
 
         .card:hover {
             transform: translateY(-5px);
-            border-color: var(--color-accent);
+            border-color: var(--color-primary-content);
             background: linear-gradient(145deg, var(--color-base-300) 0%, var(--color-base-200) 100%); /* Inverte o gradiente no hover */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra mais intensa no hover */
+            box-shadow: 0 0 10px var(--color-accent), 0 0 20px var(--color-primary); /* Brilho mais intenso no hover */
         }
 
         .card-media {
@@ -166,10 +172,10 @@
             border-radius: var(--radius-selector);
             object-fit: contain;
             margin-right: calc(var(--size-field) * 2);
-            border: 2px solid var(--color-neutral); /* Borda sólida sutil */
+            border: 2px solid var(--color-secondary); /* Borda sólida */
             padding: 2px; /* Espaçamento interno para a borda */
             background-color: var(--color-base-content); /* Fundo claro para ícones */
-            box-shadow: none; /* Removendo o brilho neon */
+            box-shadow: 0 0 5px var(--color-secondary); /* Brilho suave para os ícones */
         }
 
         .card-title {
@@ -177,8 +183,8 @@
             font-weight: 800;
             color: var(--color-primary-content);
             line-height: 1.2;
-            font-family: var(--font-family-sans); /* Mantém a fonte Big Shoulders Display */
-            text-shadow: none; /* Removendo o brilho neon */
+            font-family: var(--font-family-sans); /* Adiciona a fonte Big Shoulders Display */
+            text-shadow: 0 0 3px var(--color-primary-content); /* Brilho sutil para o título do card */
         }
 
         .card-description {
@@ -194,7 +200,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: var(--border) solid var(--color-primary-content);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil para profundidade */
+            box-shadow: 0 0 10px var(--color-primary-content), 0 0 20px rgba(30, 144, 255, 0.5); /* Brilho suave para a imagem de perfil */
         }
 
         .profile-name {
@@ -202,7 +208,7 @@
             font-weight: 900;
             color: var(--color-primary-content);
             margin-top: 1rem;
-            text-shadow: none; /* Removendo o brilho neon */
+            text-shadow: 0 0 8px var(--color-primary-content), 0 0 15px var(--color-primary); /* Brilho suave para o nome do perfil */
         }
 
         .profile-description {
