@@ -215,7 +215,20 @@
             align-items: center;
             padding: 1rem;
         }
-    </style>
+    </style>        /* Remove o outline padrão em elementos interativos, mas mantém a acessibilidade com outras formas de destaque */
+        :focus {
+            outline: none;
+        }
+
+        /* Exemplo de como manter a acessibilidade com um foco visual diferente */
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible,
+        select:focus-visible {
+            outline: 2px solid var(--color-accent); /* Um outline de destaque que segue o tema */
+            outline-offset: 2px;
+        }
 </head>
 <body>
     <div id="app" class="app-container">
