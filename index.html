@@ -134,8 +134,12 @@
 
         .card-media {
             width: 100%;
-            height: 200px;
+            /* Removendo height fixo para permitir proporção dinâmica */
             object-fit: cover;
+            height: auto; /* A altura será determinada pelo aspecto */
+            max-height: 500px; /* Um limite razoável para evitar mídias muito altas */
+            aspect-ratio: 9 / 16; /* Define a proporção de 9:16 (largura:altura) */
+            max-width: 100%; /* Garante que a mídia não exceda a largura do contêiner */
             border-radius: var(--radius-field);
             margin-bottom: calc(var(--size-field) * 4);
         }
