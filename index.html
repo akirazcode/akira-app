@@ -59,8 +59,6 @@
             min-height: 100vh;
             overflow-y: auto;
             background-attachment: fixed; /* Mantém o gradiente fixo ao rolar */
-            /* Adiciona um efeito de brilho sutil ao corpo */
-            box-shadow: 0 0 15px rgba(30, 144, 255, 0.2), 0 0 25px rgba(100, 255, 218, 0.1);
         }
 
         .text-primary-content { color: var(--color-primary-content); }
@@ -86,13 +84,10 @@
             text-decoration: none;
             transition: all 0.2s ease-in-out;
             border: var(--border) solid transparent;
-            /* box-shadow removido */
             position: relative;
             overflow: hidden;
             color: var(--color-secondary-content);
             background: linear-gradient(45deg, var(--color-secondary) 0%, var(--color-accent) 100%);
-            text-shadow: 0 0 3px var(--color-secondary), 0 0 8px var(--color-accent); /* Efeito suave no texto */
-            box-shadow: 0 0 8px var(--color-secondary), 0 0 15px var(--color-accent); /* Brilho suave */
         }
 
         .btn:hover {
@@ -102,8 +97,6 @@
             background-clip: padding-box;
             -webkit-background-clip: padding-box;
             color: var(--color-primary-content);
-            text-shadow: 0 0 5px var(--color-primary-content), 0 0 10px var(--color-accent); /* Acentua o brilho no hover */
-            box-shadow: 0 0 10px var(--color-primary-content), 0 0 20px var(--color-accent); /* Brilho mais intenso no hover */
         }
 
         .btn::before {
@@ -136,14 +129,12 @@
             text-align: center;
             /* Adiciona um gradiente sutil de fundo para os cards */
             background: linear-gradient(145deg, var(--color-base-200) 0%, var(--color-base-300) 100%);
-            box-shadow: 0 0 6px rgba(30, 144, 255, 0.15), 0 0 12px rgba(100, 255, 218, 0.1); /* Brilho discreto nos cards */
         }
 
         .card:hover {
             transform: translateY(-5px);
             border-color: var(--color-primary-content);
             background: linear-gradient(145deg, var(--color-base-300) 0%, var(--color-base-200) 100%); /* Inverte o gradiente no hover */
-            box-shadow: 0 0 10px var(--color-accent), 0 0 20px var(--color-primary); /* Brilho mais intenso no hover */
         }
 
         .card-media {
@@ -175,7 +166,6 @@
             border: 2px solid var(--color-secondary); /* Borda sólida */
             padding: 2px; /* Espaçamento interno para a borda */
             background-color: var(--color-base-content); /* Fundo claro para ícones */
-            box-shadow: 0 0 5px var(--color-secondary); /* Brilho suave para os ícones */
         }
 
         .card-title {
@@ -184,7 +174,6 @@
             color: var(--color-primary-content);
             line-height: 1.2;
             font-family: var(--font-family-sans); /* Adiciona a fonte Big Shoulders Display */
-            text-shadow: 0 0 3px var(--color-primary-content); /* Brilho sutil para o título do card */
         }
 
         .card-description {
@@ -200,7 +189,6 @@
             border-radius: 50%;
             object-fit: cover;
             border: var(--border) solid var(--color-primary-content);
-            box-shadow: 0 0 10px var(--color-primary-content), 0 0 20px rgba(30, 144, 255, 0.5); /* Brilho suave para a imagem de perfil */
         }
 
         .profile-name {
@@ -208,7 +196,6 @@
             font-weight: 900;
             color: var(--color-primary-content);
             margin-top: 1rem;
-            text-shadow: 0 0 8px var(--color-primary-content), 0 0 15px var(--color-primary); /* Brilho suave para o nome do perfil */
         }
 
         .profile-description {
