@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="deep-dive">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gustavo Akira - Indie Hacker | Engenheiro Mecatrônico</title>
+    <meta name="description" content="Conecte-se com Gustavo Akira, Indie Hacker e Bacharel em Engenharia Mecatrônica. Acesse todos os seus links e projetos em um só lugar.">
+    <meta name="keywords" content="Gustavo Akira, Link na bio, Indie Hacker, Engenharia Mecatrônica, Projetos">
+    
+    <!-- Google Fonts: Big Shoulders Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS 4 -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Vue 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
+    <style>
+        :root {
+            --color-primary: #0e0e52; /* Cor principal (azul escuro) */
+            --color-primary-content: #00ffec; /* Conteúdo sobre a cor principal (ciano vibrante) */
+            --color-secondary: #ff0066; /* Cor secundária (rosa neon) */
+            --color-secondary-content: #ffffff; /* Conteúdo sobre a cor secundária (branco) */
+            --color-accent: #ff0099; /* Cor de destaque (magenta) - Ajustada para harmonia */
+            --color-accent-content: #ffffff; /* Conteúdo sobre a cor de destaque (branco) */
+            --color-neutral: #3d3d9b; /* Cor neutra (azul arroxeado escuro) */
+            --color-neutral-content: #bbbbff; /* Conteúdo sobre a cor neutra (azul claro arroxeado) */
+            --color-base-100: #1e1e7f; /* Fundo base mais escuro (azul profundo) */
+            --color-base-200: #2a2a99; /* Fundo base intermediário (azul mais claro) */
+            --color-base-300: #3d3d9b; /* Fundo base mais claro (azul arroxeado) */
+            --color-base-content: #ffffff; /* Conteúdo sobre o fundo base (branco) */
+            
+            --radius-selector: 0.5rem; /* Botões e elementos interativos */
+            --radius-field: 0.5rem; /* Campos de entrada */
+            --radius-box: 0.5rem; /* Caixas e contêineres */
+
+            --size-selector: 0.25rem; /* Padding para seletores */
+            --size-field: 0.25rem; /* Padding para campos */
+
+            --border: 2px; /* Espessura de bordas */
+            --depth: 0.5; /* Sombra sutil para profundidade */
+            --noise: 0; /* Sem ruído, limpo */
+
+            /* Fontes */
+            --font-family-sans: 'Big Shoulders Display', sans-serif;
+            --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+
+        body {
+            font-family: var(--font-family-sans);
+            background-color: var(--color-base-100);
+            color: var(--color-base-content);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+
+        .text-primary-content { color: var(--color-primary-content); }
+        .bg-primary { background-color: var(--color-primary); }
+        .text-secondary-content { color: var(--color-secondary-content); }
+        .bg-secondary { background-color: var(--color-secondary); }
+        .text-accent-content { color: var(--color-accent-content); }
+        .bg-accent { background-color: var(--color-accent); }
+        .text-neutral-content { color: var(--color-neutral-content); }
+        .bg-neutral { background-color: var(--color-neutral); }
+        .text-base-content { color: var(--color-base-content); }
+        .bg-base-100 { background-color: var(--color-base-100); }
+        .bg-base-200 { background-color: var(--color-base-200); }
+        .bg-base-300 { background-color: var(--color-base-300); }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: calc(var(--size-selector) * 2) calc(var(--size-selector) * 4);
+            border-radius: var(--radius-selector);
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s ease-in-out;
+            border: var(--border) solid transparent;
+            box-shadow: 0 var(--depth) 0.5rem rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            color: var(--color-secondary-content);
+            background-color: var(--color-secondary);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 calc(var(--depth) * 2) 1rem rgba(0,0,0,0.3);
+            border-color: var(--color-primary-content);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .card {
+            background-color: var(--color-base-200);
+            border-radius: var(--radius-box);
+            box-shadow: 0 var(--depth) 1rem rgba(0,0,0,0.3);
+            padding: calc(var(--size-field) * 4);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: var(--border) solid var(--color-neutral);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 calc(var(--depth) * 2) 1.5rem rgba(0,0,0,0.4);
+            border-color: var(--color-primary-content);
+        }
+
+        .card-media {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--radius-field);
+            margin-bottom: calc(var(--size-field) * 4);
+        }
+
+        .card-link {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            color: var(--color-base-content);
+            text-decoration: none;
+        }
+
+        .card-link-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            border-radius: 50%;
+            object-fit: contain;
+            margin-right: calc(var(--size-field) * 2);
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-primary-content);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .card-description {
+            font-size: 1rem;
+            color: var(--color-neutral-content);
+            margin-top: calc(var(--size-field) * 1);
+            line-height: 1.4;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: var(--border) solid var(--color-primary-content);
+            box-shadow: 0 0 15px rgba(0,255,236,0.7);
+        }
+
+        .profile-name {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--color-primary-content);
+            margin-top: 1rem;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+        }
+
+        .profile-description {
+            font-size: 1.1rem;
+            color: var(--color-neutral-content);
+            text-align: center;
+            margin-top: 0.5rem;
+            white-space: pre-wrap; /* Para manter quebras de linha do JSON */
+            line-height: 1.6;
+        }
+
+        .app-container {
+            max-width: 600px;
+            width: 95%;
+            margin: 2rem auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="app-container">
+        <!-- Header Section -->
+        <div v-if="profile.image" class="flex flex-col items-center mb-6">
+            <img :src="profile.image.url" alt="Foto de perfil de Gustavo Akira" class="profile-image animate-fade-in">
+            <h1 class="profile-name animate-slide-up">{{ profile.title }}</h1>
+            <p class="profile-description animate-slide-up">{{ profile.description }}</p>
+        </div>
+
+        <!-- Body Content (Cards) -->
+        <template v-for="item in content.body" :key="item.id">
+            <a v-if="item.type === 'card' && item.props.to" :href="item.props.to" target="_blank" rel="noopener noreferrer" class="card w-full animate-pop-in">
+                <template v-if="item.props.media">
+                    <img v-if="item.props.media.type === 'image'" :src="item.props.media.url" :alt="item.props.link?.title?.text || 'Mídia do card'" class="card-media">
+                    <video v-else-if="item.props.media.type === 'video'" :src="item.props.media.url" controls class="card-media"></video>
+                </template>
+                <div v-if="item.props.link" class="card-link flex-grow">
+                    <img v-if="item.props.link.icon" :src="item.props.link.icon.icon" :alt="item.props.link.title?.text || 'Ícone do link'" class="card-link-icon">
+                    <div class="flex flex-col items-start text-left flex-grow">
+                        <span v-if="item.props.link.title" class="card-title">{{ item.props.link.title.text }}</span>
+                        <span v-if="item.props.link.description" class="card-description">{{ item.props.link.description.text }}</span>
+                    </div>
+                </div>
+            </a>
+            <div v-else-if="item.type === 'card' && !item.props.to" class="card w-full animate-pop-in">
+                <template v-if="item.props.media">
+                    <img v-if="item.props.media.type === 'image'" :src="item.props.media.url" :alt="item.props.link?.title?.text || 'Mídia do card'" class="card-media">
+                    <video v-else-if="item.props.media.type === 'video'" :src="item.props.media.url" controls class="card-media"></video>
+                </template>
+                <div v-if="item.props.link" class="card-link flex-grow">
+                    <img v-if="item.props.link.icon" :src="item.props.link.icon.icon" :alt="item.props.link.title?.text || 'Ícone do link'" class="card-link-icon">
+                    <div class="flex flex-col items-start text-left flex-grow">
+                        <span v-if="item.props.link.title" class="card-title">{{ item.props.link.title.text }}</span>
+                        <span v-if="item.props.link.description" class="card-description">{{ item.props.link.description.text }}</span>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+
+    <script>
+        const { createApp, ref } = Vue;
+
+        createApp({
+            setup() {
+                const appData = {
+                    "id": "yxPTcHWDzVufFoEe7afu",
+                    "ownerId": "D2i3CzBpelR9fHdUBuCL",
+                    "userIds": [
+                        "D2i3CzBpelR9fHdUBuCL"
+                    ],
+                    "subscriptionId": "yxPTcHWDzVufFoEe7afu",
+                    "status": "active",
+                    "planTier": "rocket",
+                    "slug": "gustavo",
+                    "title": "Gustavo Akira",
+                    "description": "👾 Indie Hacker\n🎓 Bacharel em Eng. Mecatrônica",
+                    "image": {
+                        "type": "image",
+                        "url": "https://storage.googleapis.com/storage.apptime.app/public/apps/yxPTcHWDzVufFoEe7afu/profile/images/qzA4-Fm1XLReuM0amokmXHF2qv-KFS5C/imgHd.jpg"
+                    },
+                    "category": "business",
+                    "theme": {
+                        "borderRadius": "sharp",
+                        "fontFamilyName": "Big Shoulders",
+                        "primaryColor": "#0e0e52",
+                        "onPrimaryColor": "#00ffec",
+                        "secondaryColor": "#ff0066",
+                        "onSecondaryColor": "#ffffff",
+                        "backgroundColor": "#1e1e7f",
+                        "onBackgroundColor": "#ffffff",
+                        "onBackgroundDimColor": "#8a8a8a",
+                        "surfaceColor": "#2a2a99",
+                        "onSurfaceColor": "#ffffff",
+                        "surfaceContainerColor": "#3d3d9b",
+                        "onSurfaceContainerColor": "#bbbbff",
+                        "outlineColor": "#6c63ff",
+                        "outlineHighlightColor": "#00ff99"
+                    },
+                    "content": {
+                        "header": {
+                            "id": "UJM2ujgYnaxH",
+                            "type": "profile"
+                        },
+                        "body": [
+                            {
+                                "id": "2lqqd2lh1",
+                                "type": "card",
+                                "props": {
+                                    "link": {
+                                        "icon": {
+                                            "icon": "https://storage.googleapis.com/storage.apptime.app/public/websiteIcons/www_enjoei_com_br.jpg"
+                                        },
+                                        "title": {
+                                            "text": "Enjoei"
+                                        }
+                                    },
+                                    "to": "https://www.enjoei.com.br/@gustavoakira"
+                                }
+                            },
+                            {
+                                "id": "jRPE5tbxILG2",
+                                "type": "card",
+                                "props": {
+                                    "link": {
+                                        "icon": {
+                                            "icon": "https://storage.googleapis.com/storage.apptime.app/websiteIcons/linkedin.webp",
+                                            "type": "image"
+                                        },
+                                        "title": {
+                                            "text": "LinkedIn"
+                                        }
+                                    },
+                                    "to": "https://linkedin.com/in/gustavomaedo"
+                                }
+                            },
+                            {
+                                "id": "vtCQpuZDYlab",
+                                "type": "card",
+                                "props": {
+                                    "link": {
+                                        "description": {
+                                            "text": "20% off com cupom GG"
+                                        },
+                                        "icon": {
+                                            "icon": "https://storage.googleapis.com/storage.apptime.app/public/websiteIcons/appti_me.jpg",
+                                            "type": "image"
+                                        },
+                                        "title": {
+                                            "text": "Apptime"
+                                        }
+                                    },
+                                    "media": {
+                                        "type": "image",
+                                        "url": "https://storage.googleapis.com/storage.apptime.app/public/apps/yxPTcHWDzVufFoEe7afu/grid/images/A8H3YmgEpWioiIsa7Qd0QBLc8JziyqJK/imgHd.jpg"
+                                    },
+                                    "to": "https://appti.me?utm_source=gustavo"
+                                }
+                            },
+                            {
+                                "id": "aW3Pe6I26lYk",
+                                "type": "card",
+                                "props": {
+                                    "link": {
+                                        "icon": {
+                                            "icon": "https://storage.googleapis.com/storage.apptime.app/websiteIcons/forus.webp",
+                                            "type": "image"
+                                        },
+                                        "title": {
+                                            "text": "Forus"
+                                        }
+                                    },
+                                    "media": {
+                                        "type": "image",
+                                        "url": "https://storage.googleapis.com/storage.apptime.app/public/apps/yxPTcHWDzVufFoEe7afu/grid/images/0GaCT_R2ZBF4aaV2vPLdDWl3Awvd38HS/imgHd.jpg"
+                                    },
+                                    "to": "https://forus.app/gustavo"
+                                }
+                            },
+                            {
+                                "id": "HBc_ixhV4uo7",
+                                "type": "card",
+                                "props": {
+                                    "link": {
+                                        "icon": {
+                                            "icon": "https://storage.googleapis.com/storage.apptime.app/websiteIcons/github.webp",
+                                            "type": "image"
+                                        },
+                                        "title": {
+                                            "text": "GitHub"
+                                        }
+                                    },
+                                    "to": "https://github.com/gustavomaedo"
+                                }
+                            },
+                            {
+                                "id": "T1fsg9yRz0i1",
+                                "type": "card",
+                                "props": {
+                                    "link": {
+                                        "icon": {
+                                            "icon": "https://storage.googleapis.com/storage.apptime.app/websiteIcons/instagram.webp",
+                                            "type": "image"
+                                        },
+                                        "title": {
+                                            "text": "Instagram"
+                                        }
+                                    },
+                                    "to": "https://instagram.com/gustms"
+                                }
+                            },
+                            {
+                                "id": "JWvknzFNUGiQ",
+                                "type": "card",
+                                "props": {
+                                    "media": {
+                                        "type": "video",
+                                        "url": "https://storage.googleapis.com/storage.apptime.app/public/apps/yxPTcHWDzVufFoEe7afu/grid/videos/zVakzksFkRD215lfeGdHZC1hogR1vTu0/vidHd.mp4"
+                                    },
+                                    "to": "https://appti.me"
+                                }
+                            },
+                            {
+                                "id": "Ud2OEzZpiEPQ",
+                                "type": "card",
+                                "props": {
+                                    "media": {
+                                        "type": "image",
+                                        "url": "https://storage.googleapis.com/storage.apptime.app/public/apps/yxPTcHWDzVufFoEe7afu/grid/images/Cm_6CMprSiUotNPeUJtleGPazU7jjVGH/imgHd.jpg"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "createdAt": "2024-12-24T00:12:51.422718Z",
+                    "updatedAt": "2025-08-18T03:07:20.577Z"
+                };
+
+                const profile = ref({
+                    title: appData.title,
+                    description: appData.description,
+                    image: appData.image
+                });
+
+                const content = ref(appData.content);
+
+                return {
+                    profile,
+                    content
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
