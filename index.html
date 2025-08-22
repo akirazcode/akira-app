@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="minimal-gradient">
+<html lang="pt-BR" data-theme="dark-blue-gradient">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gustavo Akira - Minimalista Gradiente | Indie Hacker</title>
-    <meta name="description" content="Conecte-se com Gustavo Akira, Indie Hacker e Bacharel em Engenharia Mecatrônica, através de um link na bio com tema minimalista e gradiente.">
-    <meta name="keywords" content="Gustavo Akira, Link na bio, Minimalista, Gradiente, Indie Hacker">
+    <title>Gustavo Akira - Indie Hacker | Engenheiro Mecatrônico</title>
+    <meta name="description" content="Conecte-se com Gustavo Akira, Indie Hacker e Bacharel em Engenharia Mecatrônica. Acesse todos os seus links e projetos em um só lugar.">
+    <meta name="keywords" content="Gustavo Akira, Link na bio, Indie Hacker, Engenharia Mecatrônica, Projetos">
     
     <!-- Google Fonts: Big Shoulders Display -->
     <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&display=swap" rel="stylesheet">
@@ -18,18 +18,18 @@
 
     <style>
         :root {
-            --color-primary: #A2D2FF; /* Azul pastel */
-            --color-primary-content: #1E2749; /* Azul escuro profundo */
-            --color-secondary: #FFC7EA; /* Rosa pastel */
-            --color-secondary-content: #1E2749; /* Azul escuro profundo */
-            --color-accent: #B0F2B4; /* Verde menta pastel */
-            --color-accent-content: #1E2749; /* Azul escuro profundo */
-            --color-neutral: #E0BBE4; /* Lilás pastel */
-            --color-neutral-content: #1E2749; /* Azul escuro profundo */
-            --color-base-100: #F8F4FF; /* Fundo branco/lilás muito claro */
-            --color-base-200: #E6E6FA; /* Lavanda clara */
-            --color-base-300: #D8BFD8; /* Card principal/elementos */
-            --color-base-content: #1E2749; /* Conteúdo principal */
+            --color-primary: #4A90E2; /* Azul médio */
+            --color-primary-content: #FFFFFF; /* Branco */
+            --color-secondary: #2C5F9C; /* Azul escuro */
+            --color-secondary-content: #FFFFFF; /* Branco */
+            --color-accent: #5ED1FF; /* Azul claro */
+            --color-accent-content: #000000; /* Preto */
+            --color-neutral: #1E3A5F; /* Azul cinzento */
+            --color-neutral-content: #BBBBBB; /* Cinza claro */
+            --color-base-100: #0A111F; /* Fundo muito escuro, quase preto azulado */
+            --color-base-200: #10182B; /* Azul escuro sutil */
+            --color-base-300: #1A243A; /* Azul petróleo escuro */
+            --color-base-content: #E0E7FF; /* Conteúdo branco azulado para contraste */
             
             --radius-selector: 0.5rem; /* Botões e elementos interativos */
             --radius-field: 0.5rem; /* Campos de entrada */
@@ -49,7 +49,7 @@
 
         body {
             font-family: var(--font-family-sans);
-            background: linear-gradient(135deg, var(--color-base-100) 0%, var(--color-base-200) 100%);
+            background: linear-gradient(135deg, var(--color-base-100) 0%, var(--color-base-300) 100%);
             color: var(--color-base-content);
             margin: 0;
             padding: 0;
@@ -59,7 +59,8 @@
             min-height: 100vh;
             overflow-y: auto;
             background-attachment: fixed; /* Mantém o gradiente fixo ao rolar */
-            box-shadow: none; /* Remove brilhos intensos */
+            /* Adiciona um efeito de brilho sutil ao corpo */
+            box-shadow: none; /* Removendo o brilho neon do corpo */
         }
 
         .text-primary-content { color: var(--color-primary-content); }
@@ -90,22 +91,14 @@
             overflow: hidden;
             color: var(--color-primary-content);
             background: linear-gradient(45deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-            text-shadow: none; /* Remove efeito neon no texto */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidade */
-            border-bottom: 3px solid var(--color-accent); /* Borda inferior sutil */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil para profundidade */
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            border-color: var(--color-neutral); /* Borda neutra no hover */
-            background: linear-gradient(45deg, var(--color-secondary) 0%, var(--color-accent) 100%); /* Novo gradiente no hover */
-            background-clip: padding-box;
-            -webkit-background-clip: padding-box;
-            color: var(--color-base-content); /* Cor de conteúdo no hover */
-            text-shadow: none; /* Remove text-shadow */
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Sombra mais intensa no hover */
-            border-bottom: 3px solid var(--color-secondary); /* Borda inferior mais suave no hover */
-        }
+            transform: translateY(-2px);
+            border-color: var(--color-accent);
+            background: linear-gradient(45deg, var(--color-secondary) 0%, var(--color-primary) 100%); /* Inverte o gradiente no hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra mais intensa no hover */
 
         .btn::before {
             content: '';
@@ -137,14 +130,14 @@
             text-align: center;
             /* Adiciona um gradiente sutil de fundo para os cards */
             background: linear-gradient(145deg, var(--color-base-200) 0%, var(--color-base-300) 100%);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Sombra suave para os cards */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil para profundidade */
         }
 
         .card:hover {
-            transform: translateY(-3px);
-            border-color: var(--color-primary); /* Borda com a cor primária no hover */
-            background: linear-gradient(145deg, var(--color-base-300) 0%, var(--color-neutral) 100%); /* Novo gradiente no hover */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra mais intensa no hover */
+            transform: translateY(-5px);
+            border-color: var(--color-accent);
+            background: linear-gradient(145deg, var(--color-base-300) 0%, var(--color-base-200) 100%); /* Inverte o gradiente no hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra mais intensa no hover */
         }
 
         .card-media {
@@ -173,10 +166,10 @@
             border-radius: var(--radius-selector);
             object-fit: contain;
             margin-right: calc(var(--size-field) * 2);
-            border: 2px solid var(--color-neutral); /* Borda sutil */
+            border: 2px solid var(--color-neutral); /* Borda sólida sutil */
             padding: 2px; /* Espaçamento interno para a borda */
-            background-color: var(--color-base-100); /* Fundo mais claro para ícones */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Sombra suave para os ícones */
+            background-color: var(--color-base-content); /* Fundo claro para ícones */
+            box-shadow: none; /* Removendo o brilho neon */
         }
 
         .card-title {
@@ -184,8 +177,8 @@
             font-weight: 800;
             color: var(--color-primary-content);
             line-height: 1.2;
-            font-family: var(--font-family-sans); /* Adiciona a fonte Big Shoulders Display */
-            text-shadow: none; /* Remove brilho neon do título */
+            font-family: var(--font-family-sans); /* Mantém a fonte Big Shoulders Display */
+            text-shadow: none; /* Removendo o brilho neon */
         }
 
         .card-description {
@@ -201,7 +194,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: var(--border) solid var(--color-primary-content);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra suave para a imagem de perfil */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil para profundidade */
         }
 
         .profile-name {
@@ -209,7 +202,7 @@
             font-weight: 900;
             color: var(--color-primary-content);
             margin-top: 1rem;
-            text-shadow: none; /* Remove brilho neon do nome do perfil */
+            text-shadow: none; /* Removendo o brilho neon */
         }
 
         .profile-description {
@@ -296,21 +289,21 @@
                     },
                     "category": "business",
                     "theme": {
-                        "borderRadius": "soft",
+                        "borderRadius": "sharp",
                         "fontFamilyName": "Big Shoulders",
-                        "primaryColor": "#A2D2FF",
-                        "onPrimaryColor": "#1E2749",
-                        "secondaryColor": "#FFC7EA",
-                        "onSecondaryColor": "#1E2749",
-                        "backgroundColor": "#F8F4FF",
-                        "onBackgroundColor": "#1E2749",
+                        "primaryColor": "#0e0e52",
+                        "onPrimaryColor": "#00ffec",
+                        "secondaryColor": "#ff0066",
+                        "onSecondaryColor": "#ffffff",
+                        "backgroundColor": "#1e1e7f",
+                        "onBackgroundColor": "#ffffff",
                         "onBackgroundDimColor": "#8a8a8a",
-                        "surfaceColor": "#E6E6FA",
-                        "onSurfaceColor": "#1E2749",
-                        "surfaceContainerColor": "#D8BFD8",
-                        "onSurfaceContainerColor": "#1E2749",
-                        "outlineColor": "#B0F2B4",
-                        "outlineHighlightColor": "#FFC7EA"
+                        "surfaceColor": "#2a2a99",
+                        "onSurfaceColor": "#ffffff",
+                        "surfaceContainerColor": "#3d3d9b",
+                        "onSurfaceContainerColor": "#bbbbff",
+                        "outlineColor": "#6c63ff",
+                        "outlineHighlightColor": "#00ff99"
                     },
                     "content": {
                         "header": {
