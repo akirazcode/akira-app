@@ -18,18 +18,18 @@
 
     <style>
         :root {
-            --color-primary: #0e0e52; /* Cor principal (azul escuro) */
-            --color-primary-content: #00ffec; /* Conteúdo sobre a cor principal (ciano vibrante) */
-            --color-secondary: #ff0066; /* Cor secundária (rosa neon) */
-            --color-secondary-content: #ffffff; /* Conteúdo sobre a cor secundária (branco) */
-            --color-accent: #ff0099; /* Cor de destaque (magenta) - Ajustada para harmonia */
-            --color-accent-content: #ffffff; /* Conteúdo sobre a cor de destaque (branco) */
-            --color-neutral: #3d3d9b; /* Cor neutra (azul arroxeado escuro) */
-            --color-neutral-content: #bbbbff; /* Conteúdo sobre a cor neutra (azul claro arroxeado) */
-            --color-base-100: #1e1e7f; /* Fundo base mais escuro (azul profundo) */
-            --color-base-200: #2a2a99; /* Fundo base intermediário (azul mais claro) */
-            --color-base-300: #3d3d9b; /* Fundo base mais claro (azul arroxeado) */
-            --color-base-content: #ffffff; /* Conteúdo sobre o fundo base (branco) */
+            --color-primary: #8A2BE2; /* Azul violeta */
+            --color-primary-content: #E0FFFF; /* Azul ciano claro */
+            --color-secondary: #FF69B4; /* Rosa choque */
+            --color-secondary-content: #FFFFFF; /* Branco */
+            --color-accent: #00FFFF; /* Ciano brilhante */
+            --color-accent-content: #000000; /* Preto para contraste */
+            --color-neutral: #4169E1; /* Azul royal */
+            --color-neutral-content: #ADD8E6; /* Azul claro */
+            --color-base-100: #1A1A2E; /* Fundo escuro quase preto */
+            --color-base-200: #16213E; /* Azul muito escuro */
+            --color-base-300: #0F3460; /* Azul escuro */
+            --color-base-content: #E0FFFF; /* Conteúdo claro para contraste */
             
             --radius-selector: 0.5rem; /* Botões e elementos interativos */
             --radius-field: 0.5rem; /* Campos de entrada */
@@ -49,7 +49,7 @@
 
         body {
             font-family: var(--font-family-sans);
-            background-color: var(--color-base-100);
+            background: linear-gradient(135deg, var(--color-base-100) 0%, var(--color-base-300) 100%);
             color: var(--color-base-content);
             margin: 0;
             padding: 0;
@@ -58,6 +58,7 @@
             align-items: flex-start;
             min-height: 100vh;
             overflow-y: auto;
+            background-attachment: fixed; /* Mantém o gradiente fixo ao rolar */
         }
 
         .text-primary-content { color: var(--color-primary-content); }
@@ -87,13 +88,17 @@
             position: relative;
             overflow: hidden;
             color: var(--color-secondary-content);
-            background-color: var(--color-secondary);
+            background: linear-gradient(45deg, var(--color-secondary) 0%, var(--color-accent) 100%);
         }
 
         .btn:hover {
             transform: translateY(-2px);
             /* box-shadow removido */
             border-color: var(--color-primary-content);
+            background: linear-gradient(45deg, var(--color-accent) 0%, var(--color-secondary) 100%); /* Inverte o gradiente no hover */
+            background-clip: padding-box; /* Garante que o gradiente não sobreponha a borda */
+            -webkit-background-clip: padding-box;
+            color: var(--color-primary-content); /* Altera a cor do texto no hover */
         }
 
         .btn::before {
@@ -124,22 +129,21 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            /* Adiciona um gradiente sutil de fundo para os cards */
+            background: linear-gradient(145deg, var(--color-base-200) 0%, var(--color-base-300) 100%);
         }
 
         .card:hover {
             transform: translateY(-5px);
             /* box-shadow removido */
             border-color: var(--color-primary-content);
+            background: linear="gradient(145deg, var(--color-base-300) 0%, var(--color-base-200) 100%);" /* Inverte o gradiente no hover */
         }
 
         .card-media {
             width: 100%;
-            /* Removendo height fixo para permitir proporção dinâmica */
+            height: 200px;
             object-fit: cover;
-            height: auto; /* A altura será determinada pelo aspecto */
-            max-height: 500px; /* Um limite razoável para evitar mídias muito altas */
-            aspect-ratio: 9 / 16; /* Define a proporção de 9:16 (largura:altura) */
-            max-width: 100%; /* Garante que a mídia não exceda a largura do contêiner */
             border-radius: var(--radius-field);
             margin-bottom: calc(var(--size-field) * 4);
         }
@@ -156,10 +160,15 @@
             width: 40px;
             height: 40px;
             min-width: 40px;
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
             border-radius: var(--radius-selector);
             object-fit: contain;
             margin-right: calc(var(--size-field) * 2);
-            /* box-shadow removido */
+            border: 2px solid var(--color-accent); /* Borda sólida vibrante */
+            padding: 2px; /* Espaçamento interno para a borda */
+            background-color: var(--color-base-content); /* Fundo claro para ícones */
         }
 
         .card-title {
@@ -184,7 +193,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: var(--border) solid var(--color-primary-content);
-            /* box-shadow removido */
+            box-shadow: 0 0 15px var(--color-primary-content); /* Brilho sutil para a imagem de perfil */
         }
 
         .profile-name {
