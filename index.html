@@ -154,6 +154,14 @@
             align-items: center;
             width: 100%;
             color: var(--color-base-content);
+        .card-media-video {
+            height: auto;
+            aspect-ratio: 9 / 16;
+        }
+        .card-media-image {
+            height: auto;
+            aspect-ratio: 3 / 4;
+        }
             text-decoration: none;
         }
 
@@ -234,8 +242,8 @@
         <template v-for="item in content.body" :key="item.id">
             <a v-if="item.type === 'card' && item.props.to" :href="item.props.to" target="_blank" rel="noopener noreferrer" class="card w-full animate-pop-in">
                 <template v-if="item.props.media">
-                    <img v-if="item.props.media.type === 'image'" :src="item.props.media.url" :alt="item.props.link?.title?.text || 'Mídia do card'" class="card-media">
-                    <video v-else-if="item.props.media.type === 'video'" :src="item.props.media.url" controls class="card-media"></video>
+                    <img v-if="item.props.media.type === 'image'" :src="item.props.media.url" :alt="item.props.link?.title?.text || 'Mídia do card'" class="card-media card-media-image">
+                    <video v-else-if="item.props.media.type === 'video'" :src="item.props.media.url" controls class="card-media card-media-video"></video>
                 </template>
                 <div v-if="item.props.link" class="card-link flex-grow">
                     <img v-if="item.props.link.icon" :src="item.props.link.icon.icon" :alt="item.props.link.title?.text || 'Ícone do link'" class="card-link-icon">
@@ -247,8 +255,8 @@
             </a>
             <div v-else-if="item.type === 'card' && !item.props.to" class="card w-full animate-pop-in">
                 <template v-if="item.props.media">
-                    <img v-if="item.props.media.type === 'image'" :src="item.props.media.url" :alt="item.props.link?.title?.text || 'Mídia do card'" class="card-media">
-                    <video v-else-if="item.props.media.type === 'video'" :src="item.props.media.url" controls class="card-media"></video>
+                    <img v-if="item.props.media.type === 'image'" :src="item.props.media.url" :alt="item.props.link?.title?.text || 'Mídia do card'" class="card-media card-media-image">
+                    <video v-else-if="item.props.media.type === 'video'" :src="item.props.media.url" controls class="card-media card-media-video"></video>
                 </template>
                 <div v-if="item.props.link" class="card-link flex-grow">
                     <img v-if="item.props.link.icon" :src="item.props.link.icon.icon" :alt="item.props.link.title?.text || 'Ícone do link'" class="card-link-icon">
