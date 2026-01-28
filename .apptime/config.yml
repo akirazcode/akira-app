@@ -4,3 +4,5 @@ app:
   buildType: noBuild
   deployPath: ""
   deployEntry: index.html
+  title: "Gustavo Akira | Links"
+  description: "Acesse todos os meus links e projetos."
