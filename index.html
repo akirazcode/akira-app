@@ -28,8 +28,8 @@
         --color-bg: #05040a;
         --color-bg-alt: #0a0814;
         --color-cyan: #00f3ff;
-        --color-pink: #ff00ff;
-        --color-purple: #9d00ff;
+        --color-pink: #ff006a;
+        --color-purple: #4000ff;
         --color-yellow: #ffee00;
 
         /* Functional Colors */
@@ -46,7 +46,7 @@
         --neon-shadow-cyan:
           0 0 10px rgba(0, 243, 255, 0.4), 0 0 20px rgba(0, 243, 255, 0.2);
         --neon-shadow-pink:
-          0 0 10px rgba(255, 0, 255, 0.4), 0 0 20px rgba(255, 0, 255, 0.2);
+          0 0 10px rgba(0, 21, 255, 0.4), 0 0 20px rgba(255, 0, 255, 0.2);
         --crt-scanline-color: rgba(18, 16, 16, 0.1);
         --glass-bg: rgba(20, 20, 30, 0.6);
 
@@ -168,9 +168,9 @@
       /* --- Profile Section --- */
 
       .profile-image {
-        width: 130px;
-        height: 130px;
-        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        border-radius: var(--card-radius);
         border: 3px solid var(--color-cyan);
         box-shadow: 0 0 25px rgba(0, 243, 255, 0.3);
         object-fit: cover;
@@ -210,7 +210,7 @@
       .profile-description {
         font-family: var(--font-mono);
         font-size: 0.95rem;
-        color: var(--text-muted);
+        color: #e2e8f0;
         text-align: center;
         white-space: pre-wrap;
         line-height: 1.6;
@@ -290,7 +290,7 @@
       /* Card Content */
       .card-link {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         gap: 1rem;
       }
 
@@ -324,7 +324,8 @@
       .card-description {
         display: block;
         font-size: 0.95rem;
-        color: var(--text-muted);
+        color: #fff;
+        opacity: 0.8;
         font-family: var(--font-mono);
       }
 
@@ -417,19 +418,46 @@
         animation-delay: 0.6s;
       }
 
-      /* Responsive Optimizations */
-      @media (max-width: 640px) {
-        .app-container {
-          padding: 1.5rem 1rem 5rem;
-        }
-        .profile-name {
-          font-size: 2.25rem;
-        }
-        .card-link-icon {
-          width: 42px;
-          height: 42px;
-          min-width: 42px;
-        }
+      /* Profile Header & Background Video */
+      .profile-header {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--glass-bg);
+        border-radius: var(--card-radius);
+        padding: 2.5rem 1.5rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .profile-bg-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        object-fit: cover;
+        opacity: 0.5;
+        filter: saturate(1.5) contrast(1.2);
+      }
+
+      .profile-header-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          rgba(5, 4, 10, 0.3),
+          rgba(5, 4, 10, 0.8)
+        );
+        z-index: 1;
+      }
+
+      .z-10 {
+        z-index: 10;
+        position: relative;
       }
     </style>
     <script src="https://cdn.apptime.app/apptime.js"></script>
@@ -439,14 +467,29 @@
     <div class="vignette"></div>
     <div id="app" class="app-container">
       <!-- Header Section -->
-      <div v-if="profile.image" class="flex flex-col items-center mb-6">
+      <div
+        v-if="profile.image"
+        class="profile-header flex flex-col items-center"
+      >
+        <video
+          v-if="profile.backgroundVideo"
+          autoplay
+          muted
+          loop
+          playsinline
+          class="profile-bg-video"
+        >
+          <source :src="profile.backgroundVideo" type="video/mp4" />
+        </video>
+        <div class="profile-header-overlay"></div>
+
         <img
           :src="profile.image.url"
           alt="Foto de perfil de Gustavo Akira"
-          class="profile-image animate-fade-in"
+          class="profile-image animate-fade-in z-10"
         />
-        <h1 class="profile-name animate-slide-up">{{ profile.title }}</h1>
-        <p class="profile-description animate-slide-up">
+        <h1 class="profile-name animate-slide-up z-10">{{ profile.title }}</h1>
+        <p class="profile-description animate-slide-up z-10">
           {{ profile.description }}
         </p>
       </div>
@@ -543,10 +586,11 @@
             planTier: 'rocket',
             slug: 'gustavo',
             title: 'Gustavo Akira',
-            description: '👾 Indie Builder\n🎓 Bacharel em Eng. Mecatrônica',
+            description:
+              'Na paz, com negócios digitais 🏖️\nBacharel Eng. Mecatrônica\n2x Google for Startups',
             image: {
               type: 'image',
-              url: 'https://storage.googleapis.com/storage.apptime.app/public/apps/VRMi9FSnwI9A9YhWGlJ3/storage/libraries/default/0RvXo5Wfh9OASQTTrxTW/imgHd.png',
+              url: 'https://storage.googleapis.com/storage.apptime.app/public/apps/VRMi9FSnwI9A9YhWGlJ3/storage/libraries/default/I5lx6PQQqIW8LL5cNIvE/imgHd.jpeg',
             },
             category: 'business',
             theme: {
@@ -573,10 +617,51 @@
               },
               body: [
                 {
+                  id: 'vtCQpuZDYlab',
+                  type: 'card',
+                  props: {
+                    link: {
+                      description: {
+                        text: 'Aprenda e crie projetos com IA + Experts, tudo em uma só plataforma 🚀 ',
+                      },
+                      icon: {
+                        icon: 'https://storage.googleapis.com/storage.apptime.app/public/apps/VRMi9FSnwI9A9YhWGlJ3/storage/libraries/default/CxFq7ZQkcYOSYtuUumyi/imgHd.png',
+                        type: 'image',
+                      },
+                      title: {
+                        text: 'Apptime',
+                      },
+                    },
+                    to: 'https://appti.me?utm_source=gustavo',
+                  },
+                },
+                {
+                  id: 'aW3Pe6I26lYk',
+                  type: 'card',
+                  props: {
+                    link: {
+                      description: {
+                        text: 'Conteúdo e conexões sem distrações. Seria o vibe networking? 🤔',
+                      },
+                      icon: {
+                        icon: 'https://storage.googleapis.com/storage.apptime.app/public/apps/VRMi9FSnwI9A9YhWGlJ3/storage/libraries/default/5ysnvbt6wZzAvL6qA983/imgHd.png',
+                        type: 'image',
+                      },
+                      title: {
+                        text: 'Forus',
+                      },
+                    },
+                    to: 'https://forus.app/gustavo',
+                  },
+                },
+                {
                   id: 'jRPE5tbxILG2',
                   type: 'card',
                   props: {
                     link: {
+                      description: {
+                        text: 'Algumas experiências e idéias pra não perder tempo no digital ✍️',
+                      },
                       icon: {
                         icon: 'https://storage.googleapis.com/storage.apptime.app/websiteIcons/linkedin.webp',
                         type: 'image',
@@ -589,53 +674,13 @@
                   },
                 },
                 {
-                  id: 'vtCQpuZDYlab',
-                  type: 'card',
-                  props: {
-                    link: {
-                      description: {
-                        text: '20% off com cupom GG',
-                      },
-                      icon: {
-                        icon: 'https://storage.googleapis.com/storage.apptime.app/public/apps/VRMi9FSnwI9A9YhWGlJ3/storage/libraries/default/CxFq7ZQkcYOSYtuUumyi/imgHd.png',
-                        type: 'image',
-                      },
-                      title: {
-                        text: 'Apptime',
-                      },
-                    },
-                    media: {
-                      type: 'image',
-                      url: 'https://apptime.ai/og-image.webp',
-                    },
-                    to: 'https://appti.me?utm_source=gustavo',
-                  },
-                },
-                {
-                  id: 'aW3Pe6I26lYk',
-                  type: 'card',
-                  props: {
-                    link: {
-                      icon: {
-                        icon: 'https://storage.googleapis.com/storage.apptime.app/public/apps/VRMi9FSnwI9A9YhWGlJ3/storage/libraries/default/5ysnvbt6wZzAvL6qA983/imgHd.png',
-                        type: 'image',
-                      },
-                      title: {
-                        text: 'Forus',
-                      },
-                    },
-                    media: {
-                      type: 'image',
-                      url: 'https://forus.app/og-image.webp',
-                    },
-                    to: 'https://forus.app/gustavo',
-                  },
-                },
-                {
                   id: 'HBc_ixhV4uo7',
                   type: 'card',
                   props: {
                     link: {
+                      description: {
+                        text: 'Codando infinito às 5:26 da manhã 👾',
+                      },
                       icon: {
                         icon: 'https://storage.googleapis.com/storage.apptime.app/websiteIcons/github.webp',
                         type: 'image',
@@ -652,6 +697,9 @@
                   type: 'card',
                   props: {
                     link: {
+                      description: {
+                        text: 'Sempre bom mais fontes de renda 😎',
+                      },
                       icon: {
                         icon: 'https://storage.googleapis.com/storage.apptime.app/public/websiteIcons/www_enjoei_com_br.jpg',
                       },
@@ -667,6 +715,9 @@
                   type: 'card',
                   props: {
                     link: {
+                      description: {
+                        text: 'Nem uso, mas ta ai 🤷‍♂️',
+                      },
                       icon: {
                         icon: 'https://storage.googleapis.com/storage.apptime.app/websiteIcons/instagram.webp',
                         type: 'image',
@@ -676,27 +727,6 @@
                       },
                     },
                     to: 'https://instagram.com/gustms',
-                  },
-                },
-                {
-                  id: 'JWvknzFNUGiQ',
-                  type: 'card',
-                  props: {
-                    media: {
-                      type: 'video',
-                      url: 'https://storage.googleapis.com/storage.apptime.app/public/apps/yxPTcHWDzVufFoEe7afu/grid/videos/zVakzksFkRD215lfeGdHZC1hogR1vTu0/vidHd.mp4',
-                    },
-                    to: 'https://appti.me',
-                  },
-                },
-                {
-                  id: 'Ud2OEzZpiEPQ',
-                  type: 'card',
-                  props: {
-                    media: {
-                      type: 'image',
-                      url: 'https://storage.googleapis.com/storage.apptime.app/public/apps/yxPTcHWDzVufFoEe7afu/grid/images/Cm_6CMprSiUotNPeUJtleGPazU7jjVGH/imgHd.jpg',
-                    },
                   },
                 },
               ],
@@ -709,6 +739,8 @@
             title: appData.title,
             description: appData.description,
             image: appData.image,
+            backgroundVideo:
+              'https://storage.googleapis.com/storage.apptime.app/public/apps/yxPTcHWDzVufFoEe7afu/grid/videos/zVakzksFkRD215lfeGdHZC1hogR1vTu0/vidHd.mp4',
           });
 
           const content = ref(appData.content);
