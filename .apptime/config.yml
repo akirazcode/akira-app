@@ -2,7 +2,7 @@
 
 app:
   buildType: noBuild
-  deployPath: ""
+  deployPath: ''
   deployEntry: index.html
-  title: "Gustavo Akira | Links"
-  description: "Acesse todos os meus links e projetos."
+  title: 'Gustavo Akira | Links & Projetos'
+  description: 'Na paz, com negócios digitais e foco em resultado. Veja os meus projetos e redes sociais.'
