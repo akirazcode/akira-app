@@ -360,6 +360,32 @@
         font-family: var(--font-mono);
       }
 
+      .card-badge {
+        display: inline-block;
+        font-size: 0.8rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: #000;
+        background: var(--color-cyan);
+        padding: 3px 8px;
+        border-radius: 3px;
+        margin-left: 0.6rem;
+        vertical-align: middle;
+        box-shadow: 0 0 10px var(--color-cyan);
+        letter-spacing: 0.5px;
+        animation: pulseBadge 2s infinite;
+      }
+
+      @keyframes pulseBadge {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.8;
+        }
+      }
+
       /* --- Animations --- */
 
       @keyframes scrollScanlines {
@@ -556,9 +582,12 @@
               class="card-link-icon"
             />
             <div class="flex flex-col items-start text-left flex-grow">
-              <span v-if="item.props.link.title" class="card-title"
-                >{{ item.props.link.title.text }}</span
-              >
+              <span v-if="item.props.link.title" class="card-title">
+                {{ item.props.link.title.text }}
+                <span v-if="item.props.link.badge" class="card-badge"
+                  >{{ item.props.link.badge.text }}</span
+                >
+              </span>
               <span v-if="item.props.link.description" class="card-description"
                 >{{ item.props.link.description.text }}</span
               >
@@ -591,9 +620,12 @@
               class="card-link-icon"
             />
             <div class="flex flex-col items-start text-left flex-grow">
-              <span v-if="item.props.link.title" class="card-title"
-                >{{ item.props.link.title.text }}</span
-              >
+              <span v-if="item.props.link.title" class="card-title">
+                {{ item.props.link.title.text }}
+                <span v-if="item.props.link.badge" class="card-badge"
+                  >{{ item.props.link.badge.text }}</span
+                >
+              </span>
               <span v-if="item.props.link.description" class="card-description"
                 >{{ item.props.link.description.text }}</span
               >
@@ -652,6 +684,9 @@
                   type: 'card',
                   props: {
                     link: {
+                      badge: {
+                        text: 'Este site foi feito aqui',
+                      },
                       description: {
                         text: 'Aprenda e crie projetos com IA + Experts, tudo em uma só plataforma 🚀 ',
                       },
