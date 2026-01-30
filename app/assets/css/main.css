@@ -41,6 +41,11 @@
   box-sizing: border-box;
 }
 
+html {
+  background-color: var(--color-bg);
+  color: var(--text-main);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -51,7 +56,11 @@ body {
   overflow-x: hidden;
   display: flex;
   justify-content: center;
-  background: radial-gradient(circle at 50% 50%, #1a1025 0%, #000000 100%);
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    #1a1025 0%,
+    #000000 100%
+  );
 }
 
 /* --- Retro/VHS Background Effects --- */
