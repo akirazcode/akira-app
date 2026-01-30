@@ -57,7 +57,7 @@ const appData = {
               text: 'Apptime',
             },
           },
-          to: 'https://apptime.ai?utm_source=gustavo',
+          to: 'https://appti.me?utm_source=akiracode',
         },
       },
       {
@@ -76,7 +76,7 @@ const appData = {
               text: 'Forus',
             },
           },
-          to: 'https://forus.app',
+          to: 'https://forus.app?utm_source=akiracode',
         },
       },
       {
@@ -95,7 +95,7 @@ const appData = {
               text: 'LinkedIn',
             },
           },
-          to: 'https://linkedin.com/in/akiracode',
+          to: 'https://linkedin.com/in/akiracode?utm_source=akiracode',
         },
       },
       {
@@ -114,7 +114,7 @@ const appData = {
               text: 'GitHub',
             },
           },
-          to: 'https://github.com/akirazcode',
+          to: 'https://github.com/akirazcode?utm_source=akiracode',
         },
       },
       {
@@ -132,7 +132,7 @@ const appData = {
               text: 'Enjoei',
             },
           },
-          to: 'https://www.enjoei.com.br/@gustavoakira',
+          to: 'https://www.enjoei.com.br/@gustavoakira?utm_source=akiracode',
         },
       },
       {
@@ -151,7 +151,7 @@ const appData = {
               text: 'Instagram',
             },
           },
-          to: 'https://instagram.com/gustms',
+          to: 'https://instagram.com/gustms?utm_source=akiracode',
         },
       },
     ],
